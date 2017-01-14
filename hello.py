@@ -15,7 +15,8 @@ moment = Moment(app)
 
 
 class NameForm(FlaskForm):
-    name = StringField('Input your name', render_kw={'placeholder': "Search W3School"}, validators=[DataRequired(), Regexp('[a-z]{3}')])
+    name = StringField('Input your name', render_kw={'placeholder': "fantianyi"},
+                       validators=[DataRequired(), Regexp('[a-z]{3}')])
     submit = SubmitField('test submit')
 
 
