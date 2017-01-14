@@ -2,9 +2,9 @@ from flask import Flask, render_template
 from flask_script import Manager
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
-from flask_wtf import Form
+from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
-from wtforms.validators import Required
+from wtforms.validators import DataRequired, Regexp
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'hard to guess string'
@@ -14,9 +14,9 @@ bootstrap = Bootstrap(app)
 moment = Moment(app)
 
 
-class NameForm(Form):
-    name = StringField('What is your name?', validators=[Required()])
-    submit = SubmitField('Submit')
+class NameForm(FlaskForm):
+    name = StringField('Input your name', render_kw={'placeholder': "Search W3School"}, validators=[DataRequired(), Regexp('[a-z]{3}')])
+    submit = SubmitField('test submit')
 
 
 @app.errorhandler(404)
