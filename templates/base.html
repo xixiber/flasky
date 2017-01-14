@@ -31,6 +31,13 @@
 
 {% block content %}
 <div class="container">
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning alert-dismissable ">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <a href="#" class="alert-link">{{ message }}</a>
+    </div>
+    {% endfor %}
+
     {% block page_content %}{% endblock %}
 </div>
 {% endblock %}
